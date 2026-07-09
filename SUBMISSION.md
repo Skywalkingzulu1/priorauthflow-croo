@@ -1,4 +1,11 @@
-﻿## What I Built
+﻿## Track: Open - Any A2A Agents (primary) + Research & Intelligence Agents (secondary)
+
+Among 98 enrolled BUIDLs and 348 hackers on DoraHacks, PriorAuthFlow is one of the few health-tech
+A2A agents. Most entries are Web3/DeFi/blockchain-focused. Our differentiator: a real, quantified
+physician pain point (40 PAs/week, 13h, 94% burnout) solved with the same A2A/CAP primitives the
+hackathon rewards.
+
+## What I Built
 PriorAuthFlow is a callable, paid prior-authorization automation agent on the CROO agent commerce layer.
 Physicians complete an average of 40 prior authorizations per physician each week, and physicians and
 staff spend an average of 13 hours per week managing prior authorization requirements (AMA 2026,
@@ -52,3 +59,4 @@ with it, it's a paid, discoverable commerce endpoint.
 - Real payer ePA endpoints (SureScripts, Availity)
 - Multi-payer rules expansion
 - Audit log export for compliance
+
