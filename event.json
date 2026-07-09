@@ -1,0 +1,23 @@
+﻿{
+  "name": "CROO Agent Hackathon",
+  "platform": "DoraHacks",
+  "deadline_utc": "2026-07-12T02:00:00Z",
+  "format": "online",
+  "eligibility": "open - builders, students, and teams worldwide",
+  "theme": "Build paid, callable AI agents on the CROO agent commerce layer",
+  "sponsor_tech": [
+    "@croo-network/sdk",
+    "CROO Agent Protocol (CAP)",
+    "Base + USDC settlement (gas sponsored by CROO)",
+    "CROO Agent Store listing"
+  ],
+  "submission": {
+    "github_required": true,
+    "demo_video_required": true,
+    "live_demo_link": true
+  },
+  "prize_pool_usd": 10200,
+  "tracks": ["Developer Tooling", "Web3", "DoraHacks"],
+  "key_constraints": "Agent must be CALLABLE on CROO. Implement CAP: AgentClient + WebSocket loop + accept -> deliver; OrderPaid handler; DeliverableType match; typed error helpers; idempotent re-delivery. Settle in USDC.",
+  "winning_shape_hint": "A real, callable agent that does ONE useful job end-to-end on the CROO protocol, with correct CAP integration and a clean Agent Store listing."
+}
