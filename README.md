@@ -33,15 +33,20 @@ PriorAuthFlow attacks the largest share of that waste: missing-data denials.
 - **A2A/MCP typed handoff** — structured, interoperable agent artifacts
 
 ## Demo
-Open https://skywalkingzulu1.github.io/triageflow-croo/ (temporary landing; `prior-auth-flow/public/index.html` is the Pages source once renamed).
+Open https://skywalkingzulu1.github.io/priorauthflow-croo/ (GitHub Pages).
 
 ## Installation
-```
+```bash
 cp .env.example .env
 npm install
 npm test
 npm run dev
 ```
+
+## Deploy
+- **GitHub Pages**: push to `master` — GitHub Actions builds and deploys `public/` automatically.
+- **CROO agent**: `cd croo-agent && cp .env.example .env && npm install && npm start` (requires `CROO_SDK_KEY`).
+- **CROO agent (VPS)**: set `CROO_HOST`, `CROO_USER`, `CROO_PATH` env vars and run `bash deploy-croo-agent.sh`.
 
 ## License
 MIT

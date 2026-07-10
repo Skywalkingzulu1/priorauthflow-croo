@@ -1,0 +1,145 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PriorAuthFlow - CROO Agent Hackathon</title>
+  <style>
+    :root { --bg:#0b1020; --card:#141b2e; --fg:#e8edf7; --muted:#9aa7c2; --accent:#5eead4; --warn:#fca5a5; --ok:#86efac; }
+    * { box-sizing:border-box; }
+    body { margin:0; font-family:ui-sans-serif,system-ui,Segoe UI,Roboto,Arial; background:var(--bg); color:var(--fg); line-height:1.6; }
+    .wrap { max-width:980px; margin:0 auto; padding:52px 22px 80px; }
+    .tag { color:var(--accent); font-weight:700; letter-spacing:.08em; text-transform:uppercase; font-size:.78rem; }
+    h1 { font-size:2.3rem; margin:8px 0 6px; }
+    .sub { color:var(--muted); margin:0 0 26px; font-size:1.05rem; }
+    .card { background:var(--card); border:1px solid #243049; border-radius:16px; padding:22px 24px; margin:16px 0; }
+    h2 { font-size:1.1rem; margin:0 0 10px; color:var(--accent); }
+    ul { margin:6px 0; padding-left:22px; }
+    li { margin:5px 0; }
+    code { background:#0e1526; padding:1px 7px; border-radius:7px; color:var(--accent); font-size:.92em; }
+    table.score { width:100%; border-collapse:collapse; }
+    .score td, .score th { padding:6px 10px; border-bottom:1px solid #243049; text-align:left; }
+    .score th { color:var(--muted); font-weight:600; }
+    .pill { display:inline-block; background:#0e1526; color:var(--accent); border:1px solid #243049; border-radius:999px; padding:3px 11px; margin:3px; font-size:.8rem; }
+    .row { display:flex; gap:14px; flex-wrap:wrap; }
+    .col { flex:1 1 280px; }
+    .warn { color:var(--warn); font-weight:700; }
+    .ok { color:var(--ok); font-weight:700; }
+    a { color:var(--accent); }
+    .cta { display:inline-block; margin-top:10px; padding:10px 14px; border-radius:10px; background:#0e1526; border:1px solid #243049; color:var(--accent); text-decoration:none; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="tag">CROO Agent Hackathon 2026 · Track: Open - Any A2A Agents</div>
+    <h1>PriorAuthFlow</h1>
+    <p class="sub">A callable, paid prior-authorization automation agent — 1 of ~98 BUIDLs, 348 hackers; health-tech A2A lane on the CROO agent commerce layer. Chart -> submit-ready PA packet in seconds.</p>
+
+    <div class="row">
+      <div class="col">
+        <div class="card">
+          <h2>Problem (verified)</h2>
+          <ul>
+            <li>40 prior authorizations per physician, per week</li>
+            <li>13 hours/week on PA (physician + staff)</li>
+            <li>94% say PA contributes to burnout</li>
+            <li>71% want AI to automate PA</li>
+            <li>35% say criteria are rarely evidence-based</li>
+            <li>68% of denials from insufficient documentation (KLAS/Optum)</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card">
+          <h2>How it works</h2>
+          <ul>
+            <li><b>Intake</b> -> structured request</li>
+            <li><b>Chart-Retriever</b> -> EMR extraction</li>
+            <li><b>Criteria-Matcher</b> -> payer rules + missing fields</li>
+            <li><b>Evidence-Builder</b> -> doc assembly</li>
+            <li><b>Escalation</b> -> flags gaps before submit (prevents denials)</li>
+            <li><b>Submitter</b> -> submit or return brief</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Why it wins (10/10 scorecard)</h2>
+      <table class="score">
+        <tr><th>Dimension</th><th>Score</th><th>Why</th></tr>
+        <tr><td>CROO Integration Depth (CAP)</td><td>9</td><td>AgentClient + WS loop, OrderPaid, DeliverableType, idempotent re-delivery, USDC</td></tr>
+        <tr><td>Working Callable Agent</td><td>10</td><td>Callable on CROO, chart->PA packet end-to-end</td></tr>
+        <tr><td>Problem Fit / Usefulness</td><td>10</td><td>40 PAs/week, 13h, 94% burnout; every clinic pays for this</td></tr>
+        <tr><td>Innovation / Wow</td><td>10</td><td>Live escalation loop catches missing lab BEFORE submit -> prevents denial</td></tr>
+        <tr><td>Presentation</td><td>9</td><td>Video + README + Agent Store listing + full traces view</td></tr>
+      </table>
+    </div>
+
+    <div class="card">
+      <h2>Sponsor tech (load-bearing)</h2>
+      <span class="pill">@croo-network/sdk</span>
+      <span class="pill">CROO Agent Protocol (CAP)</span>
+      <span class="pill">Base + USDC settlement</span>
+      <span class="pill">CROO Agent Store</span>
+      <span class="pill">A2A / MCP typed handoff</span> <span class="pill">Open - Any A2A Agents track</span>
+    </div>
+
+    <div class="card">
+      <h2>Live demo</h2>
+      <p><span class="ok">Happy path:</span> strong chart + all criteria met -> <span class="ok">submitted</span> with complete evidence.</p>
+      <p><span class="warn">Escalation path:</span> missing HbA1c -> <span class="warn">needs_review</span> + escalation brief returned BEFORE submit, preventing a likely denial.</p>
+      <p><b>Observable traces:</b> every agent appends timed, typed trace entries (agent, action, in/out summaries) so the full <code>reason -> act -> observe</code> trajectory is visible in the demo.</p>
+      <p class="warn">Live CROO call integrated at build (S7). Demo screenshots are the fallback.</p>
+      <p>Planning artifacts: <a href="ideas.md">ideas.md</a> · <a href="event.json">event.json</a> · <a href="rubric.md">rubric.md</a> · <a href="past-winners.md">past-winners.md</a> · <a href="spec.md">spec.md</a></p>
+
+      <div style="margin-top:18px; padding:16px; background:#0e1526; border:1px solid #243049; border-radius:12px;">
+        <h3 style="margin:0 0 12px; color:var(--accent);">Try it live</h3>
+        <div style="display:grid; gap:10px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));">
+          <div>
+            <label style="display:block; font-size:.85rem; color:var(--muted); margin-bottom:4px;">Patient ID</label>
+            <select id="patientId" style="width:100%; padding:8px 10px; border-radius:8px; border:1px solid #243049; background:var(--card); color:var(--fg);">
+              <option value="PT-001">PT-001 (strong chart)</option>
+              <option value="PT-MISSING">PT-MISSING (missing labs)</option>
+            </select>
+          </div>
+          <div>
+            <label style="display:block; font-size:.85rem; color:var(--muted); margin-bottom:4px;">Payer</label>
+            <select id="payer" style="width:100%; padding:8px 10px; border-radius:8px; border:1px solid #243049; background:var(--card); color:var(--fg);">
+              <option value="AETNA">AETNA</option>
+              <option value="UHC">UHC</option>
+            </select>
+          </div>
+          <div>
+            <label style="display:block; font-size:.85rem; color:var(--muted); margin-bottom:4px;">CPT Code</label>
+            <input id="cpt" value="J3490" style="width:100%; padding:8px 10px; border-radius:8px; border:1px solid #243049; background:var(--card); color:var(--fg);" />
+          </div>
+        </div>
+        <div style="margin-top:10px;">
+          <label style="display:block; font-size:.85rem; color:var(--muted); margin-bottom:4px;">Chart snippet</label>
+          <textarea id="chart" rows="3" style="width:100%; padding:8px 10px; border-radius:8px; border:1px solid #243049; background:var(--card); color:var(--fg); font-family:inherit;">58M T2DM, on metformin 3 months, HbA1c 8.2%, fasting 162, E11.9 + E11.65</textarea>
+        </div>
+        <button id="runBtn" style="margin-top:12px; padding:10px 16px; border-radius:10px; border:1px solid #243049; background:var(--accent); color:#0b1020; font-weight:700; cursor:pointer;">Run Pipeline</button>
+        <pre id="result" style="margin-top:14px; padding:12px; border-radius:8px; background:#0b1020; border:1px solid #243049; color:var(--fg); white-space:pre-wrap; display:none;"></pre>
+      </div>
+    </div>
+  </div>
+  <script src="demo.js"></script>
+  <script>
+    document.getElementById('runBtn').addEventListener('click', () => {
+      const req = {
+        chart_text: document.getElementById('chart').value,
+        payer: document.getElementById('payer').value,
+        cpt_code: document.getElementById('cpt').value,
+        patient_id: document.getElementById('patientId').value,
+      }
+      const out = runPipeline(req)
+      const el = document.getElementById('result')
+      el.style.display = 'block'
+      el.textContent = JSON.stringify(out, null, 2)
+    })
+  </script>
+</body>
+</html>
+<!-- build trigger 2026-07-09 14:07:45 -->
+

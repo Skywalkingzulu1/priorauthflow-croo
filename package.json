@@ -1,13 +1,39 @@
-﻿{
-  "name": "prior-auth-flow",
-  "version": "0.1.0",
+{
+  "name": "priorauthflow",
+  "version": "0.2.0",
   "private": true,
   "type": "module",
-  "main": "dist/index.js",
+  "main": "dist/server/index.js",
+  "workspaces": [
+    "croo-agent"
+  ],
   "scripts": {
-    "dev": "tsx watch src/agent/orchestrator.ts",
-    "build": "tsup src/agent/orchestrator.ts --format esm --out-dir dist",
+    "dev": "tsx watch src/server/index.ts",
+    "build": "tsup src/server/index.ts --format esm --out-dir dist",
+    "start": "node dist/server/index.js",
     "test": "vitest run src/tests",
-    "pages": "npx serve public -l 4173"
+    "puppeteer": "vitest run src/tests/e2e.test.ts",
+    "pages": "npx serve public -l 4173",
+    "pages:build": "node -e \"const fs=require('fs');const p=require('./package.json');fs.writeFileSync('public/package.json', JSON.stringify({name:p.name,version:p.version},null,2))\"",
+    "croo": "npm run -w priorauthflow-croo-agent start",
+    "croo:start": "cd croo-agent && npm run start",
+    "croo:install": "cd croo-agent && npm install"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.6",
+    "@types/node": "^26.1.1",
+    "puppeteer": "^25.3.0",
+    "serve": "^14.2.6",
+    "tsup": "^8.5.1",
+    "tsx": "^4.23.0",
+    "typescript": "^7.0.2",
+    "vitest": "^4.1.10"
+  },
+  "dependencies": {
+    "@croo-network/sdk": "^0.2.1",
+    "@supabase/supabase-js": "^2.110.2",
+    "cors": "^2.8.6",
+    "express": "^5.2.1"
   }
 }

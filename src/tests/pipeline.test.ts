@@ -1,5 +1,5 @@
 ﻿import { describe, it, expect } from "vitest"
-import { runPipeline } from "../src/agent/orchestrator.js"
+import { runPipeline } from "../agent/orchestrator.js"
 
 describe("PriorAuthFlow pipeline", () => {
   it("happy path: strong chart -> approved packet", () => {
@@ -45,6 +45,6 @@ describe("PriorAuthFlow pipeline", () => {
     expect(agents).toContain("Chart-Retriever")
     expect(agents).toContain("Criteria-Matcher")
     expect(agents).toContain("Evidence-Builder")
-    expect(agents).toContain(expect.stringMatching(/^(Submitter|Escalation)$/))
+    expect(agents.some(a => a === "Submitter" || a === "Escalation")).toBe(true)
   })
 })

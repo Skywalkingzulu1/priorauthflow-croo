@@ -11,6 +11,13 @@ const MOCK_EMR: Record<string, ChartData> = {
     prior_treatments: ['metformin 3 months'],
     allergies: [],
   },
+  'PT-MISSING': {
+    diagnoses: ['E11.9'],
+    labs: [],
+    medications: [],
+    prior_treatments: [],
+    allergies: [],
+  },
 }
 
 export function getChart(patientId: string): ChartData {
